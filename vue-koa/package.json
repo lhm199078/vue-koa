@@ -4,15 +4,21 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:prod": "cross-env env=prod vue-cli-service build --modern && node ./build/copyUpgradeHtml.js",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-eslint": "^10.0.1",
+    "browser": "^0.2.6",
     "element-ui": "^2.6.1",
+    "eslint-config-alloy": "^1.4.2",
     "register-service-worker": "^1.5.2",
+    "typescript-eslint-parser": "^22.0.0",
     "vue": "^2.6.6",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
@@ -31,6 +37,10 @@
     "@vue/cli-service": "^3.4.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "chai": "^4.1.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.9.0",
+    "eslint-plugin-typescript": "^0.14.0",
+    "eslint-plugin-vue": "^5.0.0",
     "fibers": "^3.1.1",
     "sass": "^1.16.0",
     "sass-loader": "^7.1.0",
@@ -38,5 +48,10 @@
     "typescript": "^3.0.0",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "vue-template-compiler": "^2.5.21"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }

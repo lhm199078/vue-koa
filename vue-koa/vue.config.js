@@ -1,6 +1,6 @@
-
 let debugUrl = 'http://127.0.0.1:8081'
 // let debugUrl = 'https://dev-zhifu.huatu.com'
+
 const path = require('path')
 const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -15,7 +15,6 @@ module.exports = {
         config.resolve.alias
             .set('@', resolve('src'))
             .set('vue$', 'vue/dist/vue.esm.js')
-            .set('library', resolve('common-frontend/src'))
         if (envStr === 'prod') {
             console.log('prod')
         }

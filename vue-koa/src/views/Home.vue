@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <button @click="getUser">获取个人信息</button>
+        <button @click="getUserInfo">获取个人信息</button>
         <el-table :data="users">
             <el-table-column
                 prop="_id"
@@ -13,9 +13,9 @@
             <el-table-column
                 prop="name"
                 label="名字">
-                <template 
+                <template
                     slot-scope="scope" >
-                    <el-button 
+                    <el-button
                         @click="getPayList(scope.row.code)"
                         type="text">{{ scope.row.name }}</el-button>
                 </template>
@@ -26,7 +26,7 @@
             </el-table-column>
             <el-table-column
                 label="操作">
-                <template 
+                <template
                     slot-scope="scope" >
                     <el-button type="text">删除</el-button>
                 </template>
@@ -46,9 +46,9 @@
             <el-table-column
                 prop="name"
                 label="名字">
-                <template 
+                <template
                     slot-scope="scope" >
-                    <el-button 
+                    <el-button
                         type="text">{{ scope.row.name }}</el-button>
                 </template>
             </el-table-column>
@@ -58,13 +58,13 @@
             </el-table-column>
             <el-table-column
                 label="操作">
-                <template 
+                <template
                     slot-scope="scope" >
                     <el-button type="text">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
-        
+
     </div>
 </template>
 
@@ -77,22 +77,29 @@ import axios from 'axios'
         HelloWorld
     },
 })
+
 export default class Home extends Vue {
     users: Array<any> = []
     payLists: Array<any> = []
     mounted() {
-        this.getUser()   
+        // this.getUserInfo()
+        // this.getUser()
     }
-    public async getUser() {
+    async getUserInfo() {
         let { data } = await axios.get('/user/info.json')
+    }
+    async getUser() {
+        let { data } = await axios.get('/user/list.json')
         this.users = data.data
     }
-    public async getPayList(code) {
+    async getPayList(code) {
         let params = {
             code: code
         }
-        let { data } = await axios.post('/pay/list.json',params)
+        let { data } = await axios.post('/pay/list.json', params)
         this.payLists = data.data
     }
 }
+// export default Home
+
 </script>

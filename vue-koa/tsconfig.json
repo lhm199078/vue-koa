@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-      "target": "esnext",
+      "target": "es5",
       "module": "esnext",
       "strict": true,
       "jsx": "preserve",
@@ -16,20 +16,19 @@
       "baseUrl": ".",
       "types": [
           "webpack-env",
+          "jest"
       ],
       "paths": {
           "@/*": [
               "src/*"
-          ],
-          "library/*": [
-              "common-frontend/src/*"
           ]
       },
       "lib": [
           "esnext",
           "dom",
           "dom.iterable",
-          "scripthost"
+          "scripthost",
+          "es2015"
       ]
   },
   "include": [
